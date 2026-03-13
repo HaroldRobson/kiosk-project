@@ -96,12 +96,19 @@ The "useless" table is just to make the data persist. users is created by Rust o
 
 2. **Build the Rust Worker:**
 Compile the Rust library to a shared object linked by OCaml.
-3. **Launch OCaml:**
+3. **Launch Binary (only on linux X86):**
 ```bash
-dune exec ./main.exe
+./_build/default/test/test.exe
+
 
 ```
+3b. Otherwise install Rust and Ocaml (with dune) and run:
+```bash
+dune build
+./_build/default/test/test.exe
 
+
+```
 
 4. **Access UI:**
 Navigate to `http://localhost:8080`.
