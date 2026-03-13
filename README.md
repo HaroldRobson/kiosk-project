@@ -85,7 +85,7 @@ The UI uses **HTMX** and **Server-Sent Events (SSE)**. The `monitor_user_loop` i
 
 ---
 
-## 🚀 How to Run
+## How to Run
 
 1. **Create Database**
 ```bash
