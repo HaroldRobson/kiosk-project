@@ -31,7 +31,7 @@ The "pointer arithmetic" was not too hard, but de/recoding say a 32 bit integer 
 | 81-144 | `name` | 64B | Null-terminated string |
 
 
-[Diagram](Diagram.jpeg)
+![Diagram](./Diagram.jpeg)
 ### Version-Based Syncing
 
 I avoided expensive Mutexes. In fact, blocking is not really an issue at all in this system. Instead, we use a **Version/Last_Synced** protocol:
