@@ -1,6 +1,8 @@
 # High Frequency CRUD (Kiosk)
 
 A hybrid **OCaml-Rust** system designed for ultra-low latency user management. This project bypasses traditional JSON/REST bottlenecks by using **Shared Memory (/dev/shm)** as the primary data plane, allowing an OCaml web server to communicate with a Rust persistence worker at memory-bus speeds.
+## Files
+There's a lot of build files since this first compiles Rust into an Ocaml library before linking (thanks to the ocaml-rs crate). My Ocaml code is in [test/test.ml](./test/test.ml) and the rust is all in [src/lib.rs](./src/lib.rs). I probably should have split the Ocaml code up a bit - apologies.
 
 ## System Architecture
 
