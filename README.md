@@ -12,7 +12,7 @@ The system is split into a **Hot Path** (performance-critical) and a **Cold Path
 * **Shared Bigarray:** A shared memory file located at `/dev/shm/hft_kiosk`.
 * **Cold Path (Rust):** A background worker that scans the memory buffer for version mismatches and syncs changes to a SQLite database using `sqlx`.
 In order to produce just one binary, I used ocaml-rs to make the Cold Path accessible from ocaml. 
-
+![UI](./UI_Image.png)
 ---
 
 ## Memory Layout & Concurrency
