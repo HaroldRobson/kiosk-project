@@ -1,6 +1,7 @@
 # High Frequency CRUD (Kiosk)
 
 A hybrid **OCaml-Rust** system designed for ultra-low latency user management. This project bypasses traditional JSON/REST bottlenecks by using **Shared Memory (/dev/shm)** as the primary data plane, allowing an OCaml web server to communicate with a Rust persistence worker at memory-bus speeds.
+![UI](./UI_Image.png)
 ## Files
 There's a lot of build files since this first compiles Rust into an Ocaml library before linking (thanks to the ocaml-rs crate). My Ocaml code is in [test/test.ml](./test/test.ml) and the rust is all in [src/lib.rs](./src/lib.rs). I probably should have split the Ocaml code up a bit - apologies.
 
@@ -12,7 +13,6 @@ The system is split into a **Hot Path** (performance-critical) and a **Cold Path
 * **Shared Bigarray:** A shared memory file located at `/dev/shm/hft_kiosk`.
 * **Cold Path (Rust):** A background worker that scans the memory buffer for version mismatches and syncs changes to a SQLite database using `sqlx`.
 In order to produce just one binary, I used ocaml-rs to make the Cold Path accessible from ocaml. 
-![UI](./UI_Image.png)
 ---
 
 ## Memory Layout & Concurrency
