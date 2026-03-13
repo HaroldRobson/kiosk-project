@@ -29,6 +29,8 @@ The "pointer arithmetic" was not too hard, but de/recoding say a 32 bit integer 
 | 16 | `age` | 1B | User age |
 | 17-80 | `email` | 64B | Null-terminated string |
 | 81-144 | `name` | 64B | Null-terminated string |
+
+
 ![Diagram](Diagram.jpg)
 ### Version-Based Syncing
 
