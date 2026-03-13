@@ -31,7 +31,7 @@ The "pointer arithmetic" was not too hard, but de/recoding say a 32 bit integer 
 | 81-144 | `name` | 64B | Null-terminated string |
 
 
-![Diagram](Diagram.jpg)
+[Diagram](Diagram.jpeg)
 ### Version-Based Syncing
 
 I avoided expensive Mutexes. In fact, blocking is not really an issue at all in this system. Instead, we use a **Version/Last_Synced** protocol:
@@ -46,9 +46,9 @@ Do note that there is nothing (beyond probability) to stop the ui displaying dat
 
 ## Key Performance Features
 
-### 1. FNV-1a Hashing & Bitwise Masking
+### 1. FNV Hashing & Bitwise Masking
 
-OCaml implements a 32-bit FNV-1a hash. To find a slot in $O(1)$ time, we use a power-of-two table size ($2^{23}$ slots). This allows us to replace the expensive modulo operator with a bitwise `AND`:
+I wrote a simple 32-bit FNV hashing algorithm for emails. To find a slot in $O(1)$ time, we use a power-of-two table size ($2^{23}$ slots). This allows us to replace the expensive modulo operator with a bitwise `AND`:
 
 ```ocaml
 (* OCaml bitwise mod trick *)
