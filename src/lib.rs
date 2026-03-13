@@ -137,7 +137,6 @@ pub unsafe fn spawn_worker(mut ba: ocaml::bigarray::Array1<i64>) {
             loop {
                 let mut users_to_add = vec![];
                 let mut users_to_delete = vec![];
-                let start_scan = std::time::Instant::now();
                 for i in 0..8388608 {
                     match UserSlot::from_buffer(ptr, i) {
                         UserSlotType::Active(userslot) => {
@@ -162,8 +161,6 @@ pub unsafe fn spawn_worker(mut ba: ocaml::bigarray::Array1<i64>) {
                         UserSlotType::Empty => {}
                     }
                 }
-                let scan_duration = start_scan.elapsed();
-                println!("duration to scan 2gb buffer: {:?}", scan_duration);
                 UserSlot::save_to_db(users_to_add, &conn).await;
                 UserSlot::delete_from_db(users_to_delete, &conn).await;
             }
