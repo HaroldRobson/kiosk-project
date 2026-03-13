@@ -1,0 +1,13 @@
+(executables
+ (libraries kiosk_project unix threads dream lwt dream-html)
+ (names test)
+ (modules test)
+   (preprocess
+  (pps lwt_ppx))
+ (link_flags
+  (-linkall -cclib -rdynamic)))
+
+(rule
+ (alias runtest)
+ (action
+  (run ./test.exe)))

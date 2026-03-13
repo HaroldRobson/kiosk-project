@@ -1,0 +1,23 @@
+[package]
+name = "kiosk_project"
+version = "0.1.0"
+authors = ["harold"]
+edition = "2021"
+
+[lib]
+crate-type = ["staticlib", "cdylib"]
+
+[dependencies]
+futures = "0.3.32"
+memoffset = "0.9.1"
+ocaml = {version = "1.1.0"}
+offset = "0.1.4"
+tokio = { version = "1.46.0", features = ["full"] }
+rand = "0.10.0"
+sqlx = { version = "0.8.6", features = ["sqlite", "runtime-tokio-rustls", "macros"]}
+
+[build-dependencies]
+ocaml-build = {version = "^1.0.0"}
+
+# Or use the development version:
+# ocaml = {git = "https://github.com/zshipko/ocaml-rs.git"}

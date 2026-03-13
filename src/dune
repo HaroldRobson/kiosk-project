@@ -1,0 +1,21 @@
+(rule
+ (targets libkiosk_project.a dllkiosk_project.so)
+ (deps
+  (glob_files *.rs))
+ (action
+  (progn
+   (run sh -c "cd %{project_root}/../.. && cargo build --release")
+   (run sh -c
+     "mv %{project_root}/../../target/release/libkiosk_project.so ./dllkiosk_project.so 2> /dev/null || mv %{project_root}/../../target/release/libkiosk_project.dylib ./dllkiosk_project.so")
+   (run mv %{project_root}/../../target/release/libkiosk_project.a
+     libkiosk_project.a))))
+
+(library
+ (name kiosk_project)
+ (public_name kiosk_project)
+ (foreign_archives kiosk_project)
+ (modes native)
+ (c_library_flags
+  (-lpthread -lc -lm))
+ (library_flags
+  (-cclib -rdynamic)))
